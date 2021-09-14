@@ -6,8 +6,8 @@ use strict;
 
 my $value;
 
-say set_random_range(2, 4);
-say set_random_range(4, 8);
+say set_random_range(0, 10);
+say set_random_range(0, 10);
 
 sub set_once {
 
@@ -25,7 +25,7 @@ sub get_random_range {
 
   my ($min, $max) = @_;
 
-  return ($min * $max);
+  return $min + int(rand($max - $min + 1));
 
 }
 
