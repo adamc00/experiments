@@ -1,0 +1,4 @@
+%syntax-version=1.0.0
+%project=sqitch-variables
+
+database 2022-08-11T10:59:44Z Logicly <support@logicly.com.au> # Init DB
