@@ -9,6 +9,3 @@ SELECT :'deployment' = 'development' AS is_development \gset
 \if :is_development
     create database :db_name;
 \endif
-
-
-
