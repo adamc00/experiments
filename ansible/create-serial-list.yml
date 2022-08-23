@@ -3,14 +3,37 @@
 - name: Docker update serial example
   hosts: localhost
   vars:
-    docker_managers: ["M1", "M2", "M3"]
+    docker_managers: ["M1", "M2", "3"]
     docker_manager_parallel_update: 1 # number of managers to update at the same time
     docker_worker_parallel_update: 2  # number of workers to update at the same time
-    docker_upgrade_serial: "{{ docker_managers | map('int', docker_manager_parallel_update) + [ docker_worker_parallel_update ] }}"
-  
+    # The next step is a somewhat convoluted way to get what was wanted as we must
+    # ensure that the manager names are non mumeric strings for it to work. There may be
+    # a better way.
+    # 
+    # 1. Iterate `docker_managers`
+    # 2. Ensure each manager name is a non numeric string - `product(['-string']) + map('join')`
+    # 3. Emit the desired value for `docker_manager_parallel_update`
+    #    _BY_ converting string to integer defaulting to 1 if the string isn't a number - 
+    #    `map('int', docker_manager_parallel_update)`
+    # 4. Add `docker_worker_parallel_update` to the end of the list generated at 3 - 
+    #    `+ [ docker_worker_parallel_update ]`
+    docker_managers_product: "{{ docker_managers | product(['-string']) }}"
+    docker_managers_string: "{{ docker_managers | product(['-string']) | map('join') }}"
+    docker_upgrade_serial: "{{ docker_managers | product(['-string']) | map('join') | map('int', docker_manager_parallel_update) + [ docker_worker_parallel_update ] }}"
+    docker_upgrade_serial_bad: "{{ docker_managers | map('int', docker_manager_parallel_update) + [ docker_worker_parallel_update ] }}"
+
   tasks:
     - name: Print docker_managers
-      debug: var=docker_managers
-    
+      debug: var=docker_managers    
+
+    - name: Print docker_managers_product
+      debug: var=docker_managers_product
+
+    - name: Print docker_managers_string
+      debug: var=docker_managers_string
+
     - name: Print docker_upgrade_serial
       debug: var=docker_upgrade_serial
+
+    - name: Print docker_upgrade_serial_bad
+      debug: var=docker_upgrade_serial_bad
