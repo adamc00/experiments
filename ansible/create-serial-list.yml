@@ -8,16 +8,21 @@
     docker_worker_parallel_update: 2  # number of workers to update at the same time
 
     # Unsafe approach, if a hostname evaluates as an integer it doesn't do the right thing
-    docker_upgrade_serial_unsafe: "{{ docker_managers \
-                                    | map('int', docker_manager_parallel_update) \
-                                    + [ docker_worker_parallel_update ] \
-                                    }}"
+    docker_upgrade_serial_unsafe: "{{ \
+      docker_managers \
+      | map('int', docker_manager_parallel_update) \
+      + [ docker_worker_parallel_update ] \
+    }}"
 
     # Interim products for demonstration only
-    docker_managers_product: "{{ docker_managers | product(['-string']) }}"
-    docker_managers_string: "{{ docker_managers \
-                              | product(['-string']) | map('join') \
-                             }}"
+    docker_managers_product: "{{ \
+      docker_managers | product(['-string']) \
+    }}"
+    
+    docker_managers_string: "{{ \
+      docker_managers \
+      | product(['-string']) | map('join') \
+    }}"
 
     # The safe approach is a somewhat convoluted way to get what was wanted as we must
     # ensure that the manager names are non mumeric strings for it to work. There may be
@@ -30,11 +35,12 @@
     #    `map('int', docker_manager_parallel_update)`
     # 4. Add `docker_worker_parallel_update` to the end of the list generated at 3 - 
     #    `+ [ docker_worker_parallel_update ]`
-    docker_upgrade_serial: "{{ docker_managers \
-                             | product(['-string']) | map('join') \
-                             | map('int', docker_manager_parallel_update) \
-                             + [ docker_worker_parallel_update ] \
-                            }}"
+    docker_upgrade_serial: "{{ \
+      docker_managers \
+      | product(['-string']) | map('join') \
+      | map('int', docker_manager_parallel_update) \
+      + [ docker_worker_parallel_update ] \
+    }}"
 
   tasks:
     - name: Print docker_managers
