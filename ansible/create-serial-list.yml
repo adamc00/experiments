@@ -29,7 +29,7 @@
     # a better way.
     # 
     # 1. Iterate `docker_managers`
-    # 2. Ensure each manager name is a non numeric string - `product(['-string']) + map('join')`
+    # 2. Ensure each manager name is a non numeric string - `product(['-string']) } | map('join')`
     # 3. Emit the desired value for `docker_manager_parallel_update`
     #    _BY_ converting string to integer defaulting to 1 if the string isn't a number - 
     #    `map('int', docker_manager_parallel_update)`
