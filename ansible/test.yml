@@ -4,8 +4,8 @@
   hosts: localhost
   vars:
     docker_managers: ["M1", "M2", "M3"]
-    docker_manager_parallel_update: 1
-    docker_worker_parallel_update: 2
+    docker_manager_parallel_update: 1 # number of managers to update at the same time
+    docker_worker_parallel_update: 2  # number of workers to update at the same time
     docker_upgrade_serial: "{{ docker_managers | map('int', docker_manager_parallel_update) + [ docker_worker_parallel_update ] }}"
   
   tasks:
