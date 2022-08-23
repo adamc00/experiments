@@ -1,4 +1,4 @@
-# ansible-playbook test.yml
+# ansible-playbook create-serial-list.yml
 ---
 - name: Docker update serial example
   hosts: localhost
