@@ -16,7 +16,7 @@
     swarm_upgrade_serial: "{{
       groups['swarm_managers']
       | map('regex_replace', '^.*$', swarm_manager_parallel_update | string )
-      | map('int')
+      | map('int') | list
       + [ swarm_worker_parallel_update | int ]
     }}"
 
