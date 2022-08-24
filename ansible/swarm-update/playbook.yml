@@ -5,7 +5,7 @@
   vars:
     swarm_managers: "{{ groups['swarm_managers'] }}" 
     swarm_manager_parallel_update: 1 # number of managers to update at the same time
-    swarm_worker_parallel_update: 2  # number of workers to update at the same time
+    swarm_worker_parallel_update:  2 # number of workers to update at the same time
 
     # 1. Iterate `docker_managers`
     # 2. Replace hostname with `docker_manager_parallel_update` cast to a string
