@@ -1,4 +1,3 @@
-# ansible-playbook playbook.yml
 ---
 - name: Docker swarm update serial example
   hosts: localhost
