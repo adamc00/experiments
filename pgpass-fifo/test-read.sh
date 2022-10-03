@@ -3,7 +3,7 @@
 set -e
 
 trap "exit" INT TERM
-trap "rm pgpass && kill 0" EXIT
+trap "kill 0" EXIT
 
 while true; do
     echo "$(date) - $BASHPID"
