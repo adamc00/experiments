@@ -62,11 +62,11 @@ foreach my $marking_source (@marking_sources) {
     }
 
     if ( $result eq $string->{result}) {
-      say "pass:\t$string->{text} ($result)\n";
+      say "pass ($result):\n$string->{text}\n";
     }
     else {
       $failures++;
-      say "fail:\t$string->{text} ('$result' desired '$string->{result}')\n";
+      say "fail ('$result', desired '$string->{result}'):\n$string->{text}\n";
     }
   }
 
