@@ -33,18 +33,8 @@ say "### $0\n";
 say "#### Subjects\n";
 say '```';
 
-foreach my $subject (@subjects) {
-
-  my $text = $subject->{text};
-  my $desired_result = $subject->{result};
-
-  my $result = "undefined";
-  if ( $text =~ /\[SEC=(OFFICIAL:\s*Sensitive|PROTECTED|SECRET|TOP-SECRET)/ ) {
-    $result = 'deny';
-  }
-  else {
-    $result = 'allow';
-  }
+sub test {
+  my ($result, $desired_result, $text) = @_;
 
   if ( $result eq $desired_result) {
     say "pass:\t$text ($result)\n";
@@ -55,6 +45,22 @@ foreach my $subject (@subjects) {
   }
 
 }
+
+foreach my $subject (@subjects) {
+
+  my $text = $subject->{text};
+
+  my $result = "undefined";
+  if ( $text =~ /\[SEC=(OFFICIAL:\s*Sensitive|PROTECTED|SECRET|TOP-SECRET)/ ) {
+    $result = 'deny';
+  }
+  else {
+    $result = 'allow';
+  }
+
+  test($result, $subject->{result}, $text);
+
+}
 say "```\n";
 
 say "#### Headers\n";
@@ -63,7 +69,6 @@ say '```';
 foreach my $header (@headers) {
 
   my $text = $header->{text};
-  my $desired_result = $header->{result};
 
   my $result = "undefined";
   if ( $text =~ /X-Protective-Marking:.*NS=gov\.au.*SEC=(OFFICIAL:\s*Sensitive|PROTECTED|SECRET|TOP-SECRET)/s ) {
@@ -73,13 +78,7 @@ foreach my $header (@headers) {
     $result = 'allow';
   }
 
-  if ( $result eq $desired_result) {
-    say "pass:\t$text ($result)\n";
-  }
-  else {
-    $failures++;
-    say "fail:\t$text ('$result' desired '$desired_result')\n";
-  }
+  test($result, $header->{result}, $text);
 
 }
 say "```\n";
