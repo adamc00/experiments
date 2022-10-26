@@ -55,9 +55,9 @@ foreach my $subject (@subjects) {
   }
 
 }
-say '```';
+say "```\n";
 
-say "\n#### Headers\n";
+say "#### Headers\n";
 say '```';
 
 foreach my $header (@headers) {
@@ -82,7 +82,7 @@ foreach my $header (@headers) {
   }
 
 }
-say '```';
+say "```\n";
 
-say"\n#### Results\n";
+say"#### Results\n";
 say "**Failures: $failures**\n";
