@@ -28,7 +28,10 @@ my @headers = (
   {text => "X-Protective-Marking: VER=2018.4, NS=gov.au,\nSEC=SECRET,\nCAVEAT=SH:ACCOUNTABLE-MATERIAL,\nCAVEAT=RI:AUSTEO,\nORIGIN=neville.jones\@entity.gov.au", result => 'deny'},
 );
 
-say "\nSubjects:"; say "";
+say "### $0\n";
+
+say "#### Subjects\n";
+say '```';
 
 foreach my $subject (@subjects) {
 
@@ -52,8 +55,10 @@ foreach my $subject (@subjects) {
   }
 
 }
+say '```';
 
-say "\nHeaders:"; say "";
+say "\n#### Headers\n";
+say '```';
 
 foreach my $header (@headers) {
 
@@ -69,7 +74,7 @@ foreach my $header (@headers) {
   }
 
   if ( $result eq $desired_result) {
-    say "pass:\t$text\n";
+    say "pass:\t$text ($result)\n";
   }
   else {
     $failures++;
@@ -77,5 +82,7 @@ foreach my $header (@headers) {
   }
 
 }
+say '```';
 
-say "\nFailures: $failures\n";
+say"\n#### Results\n";
+say "**Failures: $failures**\n";
