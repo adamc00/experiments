@@ -4,6 +4,8 @@ use v5.10;
 use warnings;
 use strict;
 
+use re 'regexp_pattern';
+
 my $failures = 0;
 
 my @marking_sources = (
@@ -44,6 +46,12 @@ say "### $0\n";
 foreach my $marking_source (@marking_sources) {
 
   say "#### $marking_source->{source}\n";
+
+  my ($pat, $mods) = regexp_pattern($marking_source->{regex});
+
+  say "regex: $pat\n";
+
+
   say '```';
 
   foreach my $string (@{$marking_source->{strings}}) {

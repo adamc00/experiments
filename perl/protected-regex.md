@@ -2,6 +2,8 @@
 
 #### Subject
 
+regex: \[SEC=(OFFICIAL:\s*Sensitive|PROTECTED|SECRET|TOP-SECRET)
+
 ```
 pass:	This is an example subject line [SEC=UNOFFICIAL] (allow)
 
@@ -24,6 +26,8 @@ pass:	This is an example subject line [SEC=TOP-SECRET] (deny)
 ```
 
 #### Header
+
+regex: X-Protective-Marking:(\n|.)*NS=gov\.au(\n|.)*SEC=(OFFICIAL:\s*Sensitive|PROTECTED|SECRET|TOP-SECRET)
 
 ```
 pass:	X-Protective-Marking: VER=2018.4, NS=gov.au,
