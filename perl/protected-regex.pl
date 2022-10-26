@@ -49,7 +49,7 @@ foreach my $marking_source (@marking_sources) {
 
   my ($pat, $mods) = regexp_pattern($marking_source->{regex});
 
-  say "regex: $pat\n";
+  say "regex: `$pat`\n";
 
 
   say '```';
