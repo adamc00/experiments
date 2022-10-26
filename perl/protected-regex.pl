@@ -26,7 +26,7 @@ my @marking_sources = (
   },
   {
     source  => 'Header',
-    regex   => qr /X-Protective-Marking:(\n|.)*NS=gov\.au(\n|.)*SEC=(OFFICIAL:\s*Sensitive|PROTECTED|SECRET|TOP-SECRET)/,
+    regex   => qr /^X-Protective-Marking:(\n|.)*NS=gov\.au(\n|.)*SEC=(OFFICIAL:\s*Sensitive|PROTECTED|SECRET|TOP-SECRET)/,
     strings => [
       {text => "X-Protective-Marking: VER=2018.4, NS=gov.au,\nSEC=UNOFFICIAL,\nORIGIN=neville.jones\@entity.gov.au", result => 'allow'},
       {text => "X-Protective-Marking: VER=2018.4, NS=gov.au,\nSEC=OFFICIAL,\nORIGIN=neville.jones\@entity.gov.au", result => 'allow'},
