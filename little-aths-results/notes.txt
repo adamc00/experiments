@@ -1,0 +1,125 @@
+https://api.resultshq.com.au/api/website/GetCentreEventDates/0281ccaf-b8b4-4e2f-b83c-6b8156f35198?_=1709530753106
+
+["23 Mar 2024_Centre Champs", "22 Mar 2024_Centre Champs", "16 Mar 2024_Event 15", "02 Mar 2024_Event 14", "25 Feb 2024_All Star Day", "17 Feb 2024_Event 13", "09 Feb 2024_Event 8 Attempt 2", "03 Feb 2024_Event 12", "20 Jan 2024_Event 11", "13 Jan 2024_Event 10", "09 Dec 2023_Event 9", "25 Nov 2023_Event 7", "11 Nov 2023_Event 6", "03 Nov 2023_Event 5 - Twilight", "28 Oct 2023_Event 4", "21 Oct 2023_Event 3", "14 Oct 2023_Event 2 This Girl Can Week", "07 Oct 2023_Event 1", "05 Oct 2023_Event Results Upload"]
+
+https://api.resultshq.com.au/api/website/GetEventNamesByDate/
+
+{"centreguid":"0281ccaf-b8b4-4e2f-b83c-6b8156f35198","eventdate":"02 Mar 2024","agegroup":"6","gender":"M"}
+
+
+[{
+    "eventtypeguid": "e14d1b1d-1d75-4689-921e-05433d5ba380",
+    "shortname": "100m",
+    "eventtypecategory": "running"
+}, {
+    "eventtypeguid": "24e8ae31-7d68-4d14-a21d-2bd13d79f554",
+    "shortname": "70m",
+    "eventtypecategory": "running"
+}, {
+    "eventtypeguid": "2e77e7ca-f342-42c9-bd33-b499bb9482ab",
+    "shortname": "Shot 1kg",
+    "eventtypecategory": "throwing"
+}]
+
+https://api.resultshq.com.au/api/website/GetEventResultsByDate/
+
+{"centreguid":"0281ccaf-b8b4-4e2f-b83c-6b8156f35198","eventdate":"02 Mar 2024","agegroup":"6","gender":"M","eventtype":"e14d1b1d-1d75-4689-921e-05433d5ba380"}
+
+[
+  {
+    "club": "St Olivers  - Coburg LAC",
+    "membershipnumber": 21734,
+    "athlete": "Alec Terenyi",
+    "agegroup": 6,
+    "gender": "M",
+    "resultvalue": "19.22",
+    "eventposition": 1,
+    "ispb": "YES"
+  },
+  {
+    "club": "Moreland  - Coburg LAC",
+    "membershipnumber": 18634,
+    "athlete": "Xavier Mann",
+    "agegroup": 6,
+    "gender": "M",
+    "resultvalue": "20.80",
+    "eventposition": 2,
+    "ispb": "NO"
+  },
+  {
+    "club": "Coburg West - Coburg LAC",
+    "membershipnumber": 20974,
+    "athlete": "Arlo Kowalski",
+    "agegroup": 6,
+    "gender": "M",
+    "resultvalue": "22.89",
+    "eventposition": 3,
+    "ispb": "YES"
+  },
+  {
+    "club": "Westbreen  - Coburg LAC",
+    "membershipnumber": 21498,
+    "athlete": "Charlie Allan",
+    "agegroup": 6,
+    "gender": "M",
+    "resultvalue": "25.34",
+    "eventposition": 4,
+    "ispb": "YES"
+  },
+  {
+    "club": "Pascoe Vale  - Coburg LAC",
+    "membershipnumber": 13927,
+    "athlete": "Noah Webster",
+    "agegroup": 6,
+    "gender": "M",
+    "resultvalue": "26.48",
+    "eventposition": 5,
+    "ispb": "NO"
+  },
+  {
+    "club": "Westbreen  - Coburg LAC",
+    "membershipnumber": 26653,
+    "athlete": "Alfie Lopez",
+    "agegroup": 6,
+    "gender": "M",
+    "resultvalue": "26.91",
+    "eventposition": 6,
+    "ispb": "NO"
+  },
+  {
+    "club": "Moreland  - Coburg LAC",
+    "membershipnumber": 26360,
+    "athlete": "Karsten Horn",
+    "agegroup": 6,
+    "gender": "M",
+    "resultvalue": "28.08",
+    "eventposition": 7,
+    "ispb": "NO"
+  }
+]
+
+curl -s \
+    --user-agent "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.3.1 Safari/605.1.15" \
+    -H "Referer: https://resultshq.com.au/" \
+    -H "Origin: https://resultshq.com.au" \
+    -H "Content-Type: application/json" \
+    https://api.resultshq.com.au/api/website/GetCentreEventDates/0281ccaf-b8b4-4e2f-b83c-6b8156f35198?_=1709530753106 \
+| jq .
+
+curl -s \
+    --user-agent "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.3.1 Safari/605.1.15" \
+    -H "Referer: https://resultshq.com.au/" \
+    -H "Origin: https://resultshq.com.au" \
+    -H "Content-Type: application/json" \
+    https://api.resultshq.com.au/api/website/GetCentreEventDates/0281ccaf-b8b4-4e2f-b83c-6b8156f35198?_=1709530753106 \
+| jq .
+
+curl -s \
+    --user-agent "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.3.1 Safari/605.1.15" \
+    -H "Referer: https://resultshq.com.au/" \
+    -H "Origin: https://resultshq.com.au" \
+    -H "Content-Type: application/json" \
+    --data '{"centreguid":"0281ccaf-b8b4-4e2f-b83c-6b8156f35198","eventdate":"02 Mar 2024","agegroup":"6","gender":"M","eventtype":"e14d1b1d-1d75-4689-921e-05433d5ba380"}' \
+    https://api.resultshq.com.au/api/website/GetEventResultsByDate/ \
+| jq .
+
