@@ -100,24 +100,19 @@ https://api.resultshq.com.au/api/website/GetEventResultsByDate/
 
 curl -s \
     --user-agent "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.3.1 Safari/605.1.15" \
-    -H "Referer: https://resultshq.com.au/" \
-    -H "Origin: https://resultshq.com.au" \
     -H "Content-Type: application/json" \
     https://api.resultshq.com.au/api/website/GetCentreEventDates/0281ccaf-b8b4-4e2f-b83c-6b8156f35198?_=1709530753106 \
 | jq .
 
 curl -s \
     --user-agent "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.3.1 Safari/605.1.15" \
-    -H "Referer: https://resultshq.com.au/" \
-    -H "Origin: https://resultshq.com.au" \
     -H "Content-Type: application/json" \
-    https://api.resultshq.com.au/api/website/GetCentreEventDates/0281ccaf-b8b4-4e2f-b83c-6b8156f35198?_=1709530753106 \
+    --data '{"centreguid":"0281ccaf-b8b4-4e2f-b83c-6b8156f35198","eventdate":"02 Mar 2024","agegroup":"6","gender":"M"}' \
+    https://api.resultshq.com.au/api/website/GetEventNamesByDate/ \
 | jq .
 
 curl -s \
     --user-agent "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.3.1 Safari/605.1.15" \
-    -H "Referer: https://resultshq.com.au/" \
-    -H "Origin: https://resultshq.com.au" \
     -H "Content-Type: application/json" \
     --data '{"centreguid":"0281ccaf-b8b4-4e2f-b83c-6b8156f35198","eventdate":"02 Mar 2024","agegroup":"6","gender":"M","eventtype":"e14d1b1d-1d75-4689-921e-05433d5ba380"}' \
     https://api.resultshq.com.au/api/website/GetEventResultsByDate/ \
